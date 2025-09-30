@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parking Slots</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      margin: 0;
+      min-height: 100vh;
+      background: #f4f7fb;
+      position: relative;
+    }
+
+    .top-bar {
+      width: 100%;
+      height: 5cm;
+      background: linear-gradient(90deg, #2980b9, #3498db);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+
+    h1 { color: #2c3e50; margin: 20px 0; font-size: 30px; }
+
+    .slot-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 80px);
+      gap: 12px;
+      justify-content: center;
+      margin: 20px auto 80px auto;
+      max-width: 900px;
+    }
+
+    .slot {
+      width: 80px;
+      height: 60px;
+      border-radius: 14px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      background: linear-gradient(135deg, #2ecc71, #27ae60);
+      color: white;
+    }
+    .slot:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+    }
+
+    .bottom-box {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      background: linear-gradient(90deg, #3498db, #2980b9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 -3px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">Parking Management System</div>
+  <h1>Select Your Slot</h1>
+
+  <div class="slot-grid" id="slot-grid"></div>
+
+  <div class="bottom-box">Safe and Secure Parking</div>
+
+  <script>
+    const grid = document.getElementById('slot-grid');
+    const rows = "ABCDEFGHIJ";
+    rows.split('').forEach(row => {
+      for (let i = 1; i <= 10; i++) {
+        const div = document.createElement('div');
+        div.className = "slot";
+        div.innerText = row + i;
+        div.onclick = () => {
+          window.location.href = `book.html?slot=${row+i}`;
+        };
+        grid.appendChild(div);
+      }
+    });
+  </script>
+</body>
+</html>
